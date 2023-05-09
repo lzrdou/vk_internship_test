@@ -1,0 +1,13 @@
+django
+djangorestframework
+pytest
+psycopg2-binary
+djangorestframework-simplejwt==4.7.2
+django-cors-headers
+asgiref==3.2.10
+pytz==2020.1
+sqlparse==0.3.1
+python-decouple
+gunicorn
+djoser
+django-cors-headers
