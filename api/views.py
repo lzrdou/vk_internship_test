@@ -45,16 +45,12 @@ class UserViewSet(DjoserUserViewSet):
                 requested_to=user
             )
             friend_request.delete()
-            if user.friends.add(friend):
-                serializer = UserSerializer(
-                    friend, context={'request': request}
-                )
-                return Response(
-                    serializer.data, status=status.HTTP_201_CREATED
-                )
+            user.friends.add(friend)
+            serializer = UserSerializer(
+                friend, context={'request': request}
+            )
             return Response(
-                {'error': 'Не удалось добавить в друзья'},
-                status=status.HTTP_400_BAD_REQUEST
+                serializer.data, status=status.HTTP_201_CREATED
             )
         try:
             friend_request = FriendRequest.objects.create(
